@@ -1,4 +1,5 @@
-<%= form_for @article do |f| %>
+<form>
+<%= form_for @article, html: { multipart: true } do |f| %>
  
   <% if @article.errors.any? %>
     <div id="error_explanation">
@@ -14,18 +15,30 @@
     </div>
   <% end %>
  
+ <div class="form-group">
   <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "form-control", :rows => "1", :placeholder=>"Title" %>
   </p>
+</div>
+ 
+ <div class="form-group">
+    <p>    
+        <%= f.label :text %><br>
+        <%= f.text_area :text, :class => "form-control", :rows => "10", :placeholder=>"Text"  %>
+    </p>
+  </div>
+
+<div class="form-group">
+  <p>
+    <%= f.label :image %><br>
+    <%= f.file_field :image, :type=>"file" %>
+  </p>
+  </div>
  
   <p>
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-success" %>
   </p>
  
 <% end %>
+</form>
