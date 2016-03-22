@@ -1,5 +1,31 @@
-<h1>Pages#home</h1>
-<%= link_to 'My Blog', controller: 'articles' %>
+<div class="page-header">
+  <h1>Laboratorium Budowlano Drogowe<small> Lbd Gola Graca</small></h1>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <% @articles.each do |article| %>
+    <div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3><%= article.title %></h3>
+        <p><%= article.text %></p>
+        <p>
+          <%= link_to 'Pokaż', article_path(article), :class => "btn btn-default" %>
+          <%= link_to 'Edytuj', edit_article_path(article), :class => "btn btn-default" %>
+          <%= link_to 'Usuń', article_path(article), :class => "btn btn-danger", 
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+        </p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
 
 <h1>Listing articles</h1>
  <%= link_to 'New article', new_article_path %>
