@@ -7,16 +7,15 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body data-spy="scroll" data-offset="150">
 
-<div class="container">
-<%= render "layouts/header" %>
-
-<%= yield %>
-
+<div id="wrap">
+	<%= render "layouts/header" %>
+		<div class="container">
+			<%= yield %>
+		</div>
 </div>
 <%= render "layouts/footer" %>
-
 
 </body>
 </html>
